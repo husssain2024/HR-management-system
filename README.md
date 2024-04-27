@@ -1,2 +1,2 @@
 # HR-management-system
-the lab seven 
+This HR Management System allows companies to manage their employees, including personal information, department, level, and salary. It provides functionalities for creating employee objects, calculating salaries based on levels, and displaying employee information on the home page.
