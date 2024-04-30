@@ -1,3 +1,8 @@
+// Generate a unique four-digit employee ID
+function generateEmployeeId() {
+    return Math.floor(1000 + Math.random() * 9000); 
+}
+
 // Employee Constructor
 function Employee(employeeId, fullName, department, level, imageUrl) {
     this.employeeId = employeeId;
@@ -5,7 +10,7 @@ function Employee(employeeId, fullName, department, level, imageUrl) {
     this.department = department;
     this.level = level;
     this.imageUrl = imageUrl;
-    this.salary = 0; 
+    this.salary = 0;
 }
 
 // Prototype method to calculate salary based on level
@@ -31,15 +36,14 @@ Employee.prototype.calculateSalary = function() {
     }
 
     const randomSalary = Math.floor(Math.random() * (maxSalary - minSalary + 1)) + minSalary;
-    this.salary = randomSalary - (randomSalary * 0.075); 
-};
-
+    this.salary = randomSalary - (randomSalary * 0.075); // Calculate net salary with 7.5% tax
+}
 
 Employee.prototype.render = function() {
-    const employeeList = document.getElementById("employee-list");
+    const employeeCards = document.getElementById("employee-cards") || document.getElementById("employee-list");
 
-    const employeeDiv = document.createElement("div");
-    employeeDiv.className = "employee"; 
+    const employeeCard = document.createElement("div");
+    employeeCard.className = "employee-card"; 
 
     const employeeInfo = `
         <img src="${this.imageUrl}" alt="${this.fullName}" class="employee-photo">
@@ -49,13 +53,13 @@ Employee.prototype.render = function() {
         <p>Salary: $${this.salary.toFixed(2)}</p>
     `;
 
-    employeeDiv.innerHTML = employeeInfo;
-    employeeList.appendChild(employeeDiv);
+    employeeCard.innerHTML = employeeInfo;
+    employeeCards.appendChild(employeeCard);
 };
 
 const employees = [
     new Employee(1000, "Ghazi Samer", "Administration", "Senior"),
-    new Employee(1001, "Lana Ali", "Finance", "Senior", ),
+    new Employee(1001, "Lana Ali", "Finance", "Senior"),
     new Employee(1002, "Tamara Ayoub", "Marketing", "Senior"),
     new Employee(1003, "Safi Walid", "Administration", "Mid-Senior"),
     new Employee(1004, "Omar Zaid", "Development", "Senior"),
@@ -67,4 +71,22 @@ const employees = [
 employees.forEach((employee) => {
     employee.calculateSalary();
     employee.render();
+});
+
+
+const employeeForm = document.getElementById("add-employee");
+employeeForm.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    const fullName = document.getElementById("full-name").value;
+    const department = document.getElementById("department").value;
+    const level = document.getElementById("level").value;
+    const imageUrl = document.getElementById("image-url").value;
+
+    
+    const newEmployee = new Employee(generateEmployeeId(), fullName, department, level, imageUrl);
+
+    
+    newEmployee.calculateSalary();
+    newEmployee.render();
 });

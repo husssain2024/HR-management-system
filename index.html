@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Employee Directory - Home</title>
-    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Link to CSS file -->
+    <title>HR Management System - Home</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Link to CSS -->
 </head>
 <body>
     <header>
-        <h1>HR-management-system
-        </h1>
+        <h1>HR Management System</h1> 
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -17,19 +16,51 @@
         </nav>
     </header>
 
-    <main id="employee-list">
+    <main>
+        <!-- Form to add a new employee -->
+        <section id="employee-form">
+            <h2>Add New Employee</h2>
+            <form id="add-employee">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" required>
 
+                <label for="department">Department:</label>
+                <select id="department">
+                    <option value="Administration">Administration</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Development">Development</option>
+                    <option value="Finance">Finance</option>
+                </select>
+
+                <label for="level">Level:</label>
+                <select id="level">
+                    <option value="Junior">Junior</option>
+                    <option value="Mid-Senior">Mid-Senior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+
+                <label for="image-url">Image URL:</label>
+                <input type="url" id="image-url" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+
+        <section id="employee-cards">
+
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Employee Directory. All rights reserved.</p>
+        <p>&copy; 2024 HR Management System. All rights reserved.</p>
         <p>Follow us on 
           <a href="#twitter">Twitter</a>, 
           <a href="#facebook">Facebook</a>, 
           <a href="#linkedin">LinkedIn</a>
         </p>
     </footer>
+    <script src="app.js"></script> <!-- Link to JavaScript file -->
 
-    <script src="app.js"></script> 
 </body>
 </html>
